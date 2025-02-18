@@ -1,0 +1,208 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Smart Watch Pro",
+      "price": 299.99,
+      "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+      "images": [
+        "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 4.8,
+      "reviews": 156,
+      "brand": "TechPro",
+      "category": "Watches",
+      "description": "Discover our luxury timepiece collection",
+      "customerReviews": [
+        {
+          "id": 1,
+          "text": "Absolutely love this watch! Great features.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "text": "Good value for the price.",
+          "rating": 4
+        },
+        {
+          "id": 3,
+          "text": "Battery life could be better.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Wireless Earbuds",
+      "price": 159.99,
+      "image": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb",
+      "images": [
+        "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 3.5,
+      "reviews": 89,
+      "brand": "AudioMax",
+      "category": "Audio",
+      "description": "Premium sound quality",
+      "customerReviews": [
+        {
+          "id": 1,
+          "text": "Absolutely love this watch! Great features.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "text": "Good value for the price.",
+          "rating": 4
+        },
+        {
+          "id": 3,
+          "text": "Battery life could be better.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Premium Sneakers",
+      "price": 199.99,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 2.7,
+      "reviews": 234,
+      "brand": "SportX",
+      "category": "Footwear",
+      "description": "Step into style with our latest collection",
+      "customerReviews": [
+        {
+          "id": 1,
+          "text": "Absolutely love this watch! Great features.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "text": "Good value for the price.",
+          "rating": 4
+        },
+        {
+          "id": 3,
+          "text": "Battery life could be better.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Fitness Tracker",
+      "price": 89.99,
+      "image": "https://images.unsplash.com/photo-1576243345690-4e4b79b63288",
+      "images": [
+        "https://images.unsplash.com/photo-1576243345690-4e4b79b63288",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 0.8,
+      "reviews": 178,
+      "brand": "TechPro",
+      "category": "Fitness",
+      "description": "Track your fitness goals",
+      "customerReviews": [
+        {
+          "id": 1,
+          "text": "Absolutely love this watch! Great features.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "text": "Good value for the price.",
+          "rating": 4
+        },
+        {
+          "id": 3,
+          "text": "Battery life could be better.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Bluetooth Speaker",
+      "price": 129.99,
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+      "images": [
+        "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 1.6,
+      "reviews": 145,
+      "brand": "AudioMax",
+      "category": "Audio",
+      "description": "Immersive sound experience",
+      "customerReviews": [
+        {
+          "id": 1,
+          "text": "Absolutely love this watch! Great features.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "text": "Good value for the price.",
+          "rating": 4
+        },
+        {
+          "id": 3,
+          "text": "Battery life could be better.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Running Shoes",
+      "price": 149.99,
+      "image": "https://images.unsplash.com/photo-1549298916-f52d724204b4",
+      "images": [
+        "https://images.unsplash.com/photo-1549298916-f52d724204b4",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 5.0,
+      "reviews": 198,
+      "brand": "SportX",
+      "category": "Footwear",
+      "description": "Perfect for your daily run",
+      "customerReviews": [
+        {
+          "id": 1,
+          "text": "Absolutely love this watch! Great features.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "text": "Good value for the price.",
+          "rating": 4
+        },
+        {
+          "id": 3,
+          "text": "Battery life could be better.",
+          "rating": 3
+        }
+      ]
+    }
+  ]
+}

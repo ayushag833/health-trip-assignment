@@ -1,0 +1,22 @@
+{
+  "carouselItems": [
+    {
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+      "title": "Premium Watches",
+      "description": "Discover our luxury timepiece collection"
+    },
+    {
+      "id": 2,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "title": "Smart Gadgets",
+      "description": "Explore cutting-edge technology"
+    },
+    {
+      "id": 3,
+      "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+      "title": "Trendy Sneakers",
+      "description": "Step into style with our latest collection"
+    }
+  ]
+} 
