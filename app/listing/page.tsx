@@ -1,17 +1,15 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiShoppingCart, FiHeart, FiFilter } from "react-icons/fi";
 import { useCart } from "@/context/CartContext";
 import productData from "@/data/products.json";
-import { usePathname } from "next/navigation";
 import { Product, Filters } from "@/types";
 
 const products = productData.products;
 
 export default function ListingPage() {
-  const pathname = usePathname();
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -94,7 +92,6 @@ export default function ListingPage() {
   const filteredProducts = filterProducts(products);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
     <div className="min-h-screen bg-dark-bg">
       {/* Header */}
       <div className="shadow-md">
@@ -295,6 +292,5 @@ export default function ListingPage() {
         </div>
       </div>
     </div>
-    </Suspense>
   );
 }
