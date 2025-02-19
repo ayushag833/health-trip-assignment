@@ -15,11 +15,34 @@ export default function ListingPage() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      setSearch(params.get("search") || "");
-    }
-  }, [pathname]);
+    const updateSearch = () => {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        const searchQuery = params.get("search") || "";
+        setSearch(searchQuery);
+  
+        // Update filters dynamically when search query changes
+        setFilters((prevFilters) => ({
+          ...prevFilters,
+          searchQuery: searchQuery,
+        }));
+      }
+    };
+  
+    updateSearch(); // Initial run
+  
+    // Listen for URL changes
+    window.addEventListener("popstate", updateSearch);
+    window.addEventListener("pushstate", updateSearch);
+    window.addEventListener("replacestate", updateSearch);
+  
+    return () => {
+      window.removeEventListener("popstate", updateSearch);
+      window.removeEventListener("pushstate", updateSearch);
+      window.removeEventListener("replacestate", updateSearch);
+    };
+  }, []);
+  
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>({
