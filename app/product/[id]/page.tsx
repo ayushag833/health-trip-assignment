@@ -30,6 +30,8 @@ const ProductDetailPage = () => {
     return <div>Loading...</div>; // Handle loading state
   }
 
+  const ReactImageMagnifier = ReactImageMagnify as unknown as React.FC<any>;
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
@@ -37,7 +39,7 @@ const ProductDetailPage = () => {
         {/* Image Gallery */}
         <div className="md:w-[27%]">
           <div className="relative h-64 md:h-96">
-            <ReactImageMagnify
+            <ReactImageMagnifier
               {...{
                 smallImage: {
                   alt: product.name,
