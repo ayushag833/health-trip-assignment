@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import { FiShoppingCart, FiHeart, FiFilter } from "react-icons/fi";
 import { useCart } from "@/context/CartContext";
@@ -68,6 +68,7 @@ export default function ListingPage() {
   const filteredProducts = filterProducts(products);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="min-h-screen bg-dark-bg">
       {/* Header */}
       <div className="shadow-md">
@@ -268,5 +269,6 @@ export default function ListingPage() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
