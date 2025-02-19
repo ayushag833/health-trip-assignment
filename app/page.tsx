@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FiSearch, FiShoppingCart, FiHeart, FiFilter } from "react-icons/fi";
-import Slider from "react-slick";
+import Slider,{Settings} from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,7 +29,7 @@ export default function HomePage() {
   });
 
   // Slick carousel settings
-  const settings = {
+  const settings:Settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -78,6 +78,7 @@ export default function HomePage() {
   };
 
   const filteredFeaturedProducts = filterProducts(featuredProducts);
+  const SlickSlider = Slider as unknown as React.FC<any>;
 
   return (
     <div className="min-h-screen bg-dark-bg">
@@ -157,7 +158,7 @@ export default function HomePage() {
       {/* Carousel Section */}
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <Slider {...settings}>
+          <SlickSlider {...settings}>
             {carouselItems.map((item) => (
               <div key={item.id} className="relative h-[400px]">
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10" />
@@ -179,7 +180,7 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </Slider>
+          </SlickSlider>
         </div>
       </section>
 
