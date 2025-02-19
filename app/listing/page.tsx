@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiShoppingCart, FiHeart, FiFilter } from "react-icons/fi";
 import { useCart } from "@/context/CartContext";
@@ -12,7 +12,11 @@ const products = productData.products;
 
 export default function ListingPage() {
   const searchParams = useSearchParams();
-  const search = searchParams.get("search");
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setSearch(searchParams.get("search") || "");
+  }, [searchParams]);
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>({
