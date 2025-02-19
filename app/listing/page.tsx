@@ -5,18 +5,21 @@ import Image from "next/image";
 import { FiShoppingCart, FiHeart, FiFilter } from "react-icons/fi";
 import { useCart } from "@/context/CartContext";
 import productData from "@/data/products.json";
-import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Product, Filters } from "@/types";
 
 const products = productData.products;
 
 export default function ListingPage() {
-  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    setSearch(searchParams.get("search") || "");
-  }, [searchParams]);
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      setSearch(params.get("search") || "");
+    }
+  }, [pathname]);
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>({
