@@ -10,39 +10,8 @@ import { Product, Filters } from "@/types";
 const products = productData.products;
 
 export default function ListingPage() {
-  const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    const updateSearch = () => {
-      if (typeof window !== "undefined") {
-        const params = new URLSearchParams(window.location.search);
-        const searchQuery = params.get("search") || "";
-        setSearch(searchQuery);
-  
-        // Update filters dynamically when search query changes
-        setFilters((prevFilters) => ({
-          ...prevFilters,
-          searchQuery: searchQuery,
-        }));
-      }
-    };
-  
-    updateSearch(); // Initial run
-  
-    // Listen for URL changes
-    window.addEventListener("popstate", updateSearch);
-    window.addEventListener("pushstate", updateSearch);
-    window.addEventListener("replacestate", updateSearch);
-  
-    return () => {
-      window.removeEventListener("popstate", updateSearch);
-      window.removeEventListener("pushstate", updateSearch);
-      window.removeEventListener("replacestate", updateSearch);
-    };
-  }, []);
-  
-
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [search, setSearch] = useState<string>("");
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [filters, setFilters] = useState<Filters>({
     priceRange: "all",
     brand: "all",
@@ -51,12 +20,20 @@ export default function ListingPage() {
     searchQuery: search || "",
   });
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const searchQuery = params.get("search") || "";
+    setSearch(searchQuery);
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      searchQuery,
+    }));
+  }, []);
+
   const { addToCart } = useCart();
 
-  // Update the function signature
   const filterProducts = (products: Product[]) => {
     return products.filter((product) => {
-      // Search Filter
       if (filters.searchQuery) {
         const searchMatch = product.name
           .toLowerCase()
@@ -64,24 +41,20 @@ export default function ListingPage() {
         if (!searchMatch) return false;
       }
 
-      // Price Range Filter
       if (filters.priceRange !== "all") {
         const [min, max] = filters.priceRange.split("-").map(Number);
         if (max && (product.price < min || product.price > max)) return false;
         if (!max && product.price < min) return false;
       }
 
-      // Brand Filter
       if (filters.brand !== "all" && product.brand !== filters.brand)
         return false;
 
-      // Rating Filter
       if (filters.rating !== "all") {
         const minRating = Number(filters.rating.split("+")[0]);
         if (product.rating < minRating) return false;
       }
 
-      // Category Filter
       if (filters.category !== "all" && product.category !== filters.category)
         return false;
 
@@ -93,7 +66,6 @@ export default function ListingPage() {
 
   return (
     <div className="min-h-screen bg-dark-bg">
-      {/* Header */}
       <div className="shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -139,13 +111,11 @@ export default function ListingPage() {
         )}
 
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Filters - Sidebar */}
           <div
             className={`md:w-64 space-y-6 ${
               isFilterOpen ? "block" : "hidden md:block"
             }`}
           >
-            {/* Price Range Filter */}
             <div className="space-y-2">
               <label className="text-lg font-medium text-white">
                 Price Range
@@ -164,7 +134,6 @@ export default function ListingPage() {
               </select>
             </div>
 
-            {/* Brand Filter */}
             <div className="space-y-2">
               <label className="text-lg font-medium text-white">Brand</label>
               <select
@@ -181,7 +150,6 @@ export default function ListingPage() {
               </select>
             </div>
 
-            {/* Category Filter */}
             <div className="space-y-2">
               <label className="text-lg font-medium text-white">Category</label>
               <select
@@ -199,7 +167,6 @@ export default function ListingPage() {
               </select>
             </div>
 
-            {/* Rating Filter */}
             <div className="space-y-2">
               <label className="text-lg font-medium text-white">Rating</label>
               <select
@@ -217,7 +184,6 @@ export default function ListingPage() {
             </div>
           </div>
 
-          {/* Product Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map((product) => (

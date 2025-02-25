@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FiSearch, FiShoppingCart, FiHeart, FiFilter } from "react-icons/fi";
-import Slider,{Settings} from "react-slick";
+import { FiSearch, FiShoppingCart, FiHeart } from "react-icons/fi";
+import Slider, { Settings } from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,15 +21,13 @@ export default function HomePage() {
   const { addToCart } = useCart();
   const router = useRouter();
 
-  // Filter state
   const [filters, setFilters] = useState({
     priceRange: "all",
     brand: "all",
     rating: "all",
   });
 
-  // Slick carousel settings
-  const settings:Settings = {
+  const settings: Settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -48,26 +46,21 @@ export default function HomePage() {
     ],
   };
 
-  // Add handleSearch function
   const handleSearch = (query: string) => {
     router.push(`/listing?search=${encodeURIComponent(query)}`);
   };
 
-  // Filter products based on selected filters
   const filterProducts = (products: Product[]) => {
     return products.filter((product: Product) => {
-      // Price Range Filter
       if (filters.priceRange !== "all") {
         const [min, max] = filters.priceRange.split("-").map(Number);
         if (max && (product.price < min || product.price > max)) return false;
         if (!max && product.price < min) return false;
       }
 
-      // Brand Filter
       if (filters.brand !== "all" && product.brand !== filters.brand)
         return false;
 
-      // Rating Filter
       if (filters.rating !== "all") {
         const minRating = Number(filters.rating.split("+")[0]);
         if (product.rating < minRating) return false;
@@ -78,11 +71,10 @@ export default function HomePage() {
   };
 
   const filteredFeaturedProducts = filterProducts(featuredProducts);
-  const SlickSlider = Slider as unknown as React.FC<any>;
+  const SlickSlider = Slider as unknown as React.FC<Settings>;
 
   return (
     <div className="min-h-screen bg-dark-bg">
-      {/* Hero Section with Search */}
       <section className="relative h-[70vh] bg-gradient-to-r from-blue-900 to-purple-900">
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0">
@@ -98,7 +90,6 @@ export default function HomePage() {
             Discover Amazing Products
           </h1>
 
-          {/* Search Bar */}
           <div className="w-full max-w-2xl flex">
             <div className="relative flex-1">
               <input
@@ -155,7 +146,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Carousel Section */}
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <SlickSlider {...settings}>
@@ -184,14 +174,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Filter Section */}
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8 text-white">
             Filter Products
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Price Range */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-300">
                 Price Range
@@ -211,7 +199,6 @@ export default function HomePage() {
               </select>
             </div>
 
-            {/* Brand Filter */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-300">
                 Brand
@@ -230,7 +217,6 @@ export default function HomePage() {
               </select>
             </div>
 
-            {/* Rating Filter */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-300">
                 Rating
@@ -252,7 +238,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products */}
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-white">

@@ -11,7 +11,6 @@ export default function Cart() {
 
   return (
     <>
-      {/* Cart Button */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed right-6 bottom-6 bg-blue-600 p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
@@ -24,7 +23,6 @@ export default function Cart() {
         )}
       </button>
 
-      {/* Cart Sidebar */}
       {isOpen && (
         <>
           <div

@@ -20,13 +20,13 @@ const ProductDetailPage = () => {
       const foundProduct = productData.products.find(
         (p) => p.id.toString() === id
       );
-      setProduct(foundProduct || null);
+      setProduct(foundProduct!);
       setSelectedImage(foundProduct?.images[0]!);
     }
   }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>; // Handle loading state
+    return <div>Loading...</div>;
   }
 
   const ReactImageMagnifier = ReactImageMagnify as unknown as React.FC<any>;
@@ -35,7 +35,6 @@ const ProductDetailPage = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
       <div className="flex flex-col md:flex-row">
-        {/* Image Gallery */}
         <div className="md:w-[27%]">
           <div className="relative h-64 md:h-96">
             <ReactImageMagnifier
@@ -44,12 +43,12 @@ const ProductDetailPage = () => {
                   alt: product.name,
                   src: selectedImage,
                   isFluidWidth: false,
-                  width: 400, // Adjust width as needed
-                  height: 350, // Adjust height as needed
+                  width: 400,
+                  height: 350,
                 },
                 largeImage: {
                   src: selectedImage,
-                  width: 800, // Adjust zoomed-in size as needed
+                  width: 800,
                   height: 800,
                 },
                 enlargedImageContainerDimensions: {
@@ -60,15 +59,15 @@ const ProductDetailPage = () => {
             />
           </div>
           <div className="flex space-x-2 mt-4">
-            {product.images.map((image: string, index: number) => (
+            {product.images.map((image: string, ind: number) => (
               <div
-                key={index}
+                key={ind}
                 className="cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
                 <Image
                   src={image}
-                  alt={`${product.name} thumbnail ${index + 1}`}
+                  alt={`${product.name} thumbnail ${ind + 1}`}
                   width={100}
                   height={100}
                   className="object-cover object-center rounded h-[5rem] w-[5rem]"
@@ -78,7 +77,6 @@ const ProductDetailPage = () => {
           </div>
         </div>
 
-        {/* Product Details */}
         <div className="md:w-1/2 md:pl-8">
           <p className="text-xl font-bold text-blue-400">${product.price}</p>
           <p className="mt-4 text-3xl">{product.brand}</p>
@@ -100,7 +98,6 @@ const ProductDetailPage = () => {
         </div>
       </div>
 
-      {/* Customer Reviews */}
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
         {product.customerReviews.map((review: CustomerReview) => (
